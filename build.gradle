@@ -1,0 +1,23 @@
+apply plugin: 'java'
+
+version = '0.0.1'
+def mainClassName = 'com.last_khajiit.skype2gitter.Skype2gitter'
+
+task build(type: Jar){
+	manifest{
+        attributes 'Main-Class': mainClassName
+    }
+    baseName = project.name
+    from{configurations.compile.collect{it.isDirectory() ? it : zipTree(it)}}
+	with jar
+}
+
+
+repositories{
+    jcenter()
+	mavenCentral()
+}
+
+dependencies{
+	compile group: 'com.samczsun', name: 'skype4j', version: '0.1.5'
+}
