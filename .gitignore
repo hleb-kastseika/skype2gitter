@@ -1,0 +1,9 @@
+# Generated files
+/.gradle/
+/build/
+
+# Eclipse project files
+.classpath
+.project
+.metadata
+.settings
