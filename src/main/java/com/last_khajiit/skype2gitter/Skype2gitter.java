@@ -31,7 +31,7 @@ public class Skype2gitter{
 			  @EventHandler
 			  public void onMessage(MessageReceivedEvent e){
 				try {
-					String message = formatSkypeMessage(e.getMessage().getSender().getDisplayName(), 
+					String message = generateGitterRequestBody(e.getMessage().getSender().getDisplayName(), 
 							e.getMessage().getContent().toString());
 					System.out.println(message);
 					sendGitterMessage(gitterToken, gittetChatId, message);
@@ -67,7 +67,7 @@ public class Skype2gitter{
 		}
 	}
 	
-	private static String formatSkypeMessage(String senderName, String message){
+	private static String generateGitterRequestBody(String senderName, String message){
 		String formatedMessage = "{\"text\":\"" + senderName.replace("\"","\\\"") 
 				+ " says:\\n>" + message.replace("\"","\\\"") + "\"}";
 		formatedMessage = formatedMessage.replace("<b>","**").replace("</b>","**").replace("<i>","*")
