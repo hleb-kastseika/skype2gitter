@@ -7,3 +7,6 @@
 .project
 .metadata
 .settings
+
+# Heroku
+Procfile
