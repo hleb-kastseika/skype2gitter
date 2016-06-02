@@ -12,6 +12,8 @@ task dist(type: Jar){
 	with jar
 }
 
+task stage(dependsOn: dist)
+
 repositories{
     jcenter()
 	mavenCentral()
