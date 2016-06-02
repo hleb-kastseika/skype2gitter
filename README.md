@@ -4,6 +4,16 @@
 
 A Skype bot that echoes activity to Gitter.
 
+#### How to run
+- build with Gradle `gradle dist`
+- run Jar-file `java -jar skype2gitter-0.0.1.jar {{skype_login}} {{skype_password}} {{gitter_room_id}} {{gitter_token}}`
+
+#### ToDo
+ - add links formatting in messages
+ - add searching of Skype and Gitter chats by name
+ - add arguments validation, remove hardcode, add errors handling
+ - write tests
+ - write documentation 
 
 
 *Feel free to make pull requests!*
