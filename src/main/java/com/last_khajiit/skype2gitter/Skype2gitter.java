@@ -69,7 +69,7 @@ public class Skype2gitter{
 	
 	private static String generateGitterRequestBody(String senderName, String message){
 		String formatedMessage = "{\"text\":\"" + senderName.replace("\"","\\\"") 
-				+ " says:\\n>" + message.replace("\"","\\\"") + "\"}";
+				+ " said in Skype:\\n>" + message.replace("\"","\\\"") + "\"}";
 		formatedMessage = formatedMessage.replace("<b>","**").replace("</b>","**").replace("<i>","*")
 				.replace("</i>","*").replace("<s>","~~").replace("</s>","~~").replace("<pre>","```")
 				.replace("</pre>","```").replace("\n", " ").replace("\r", " ");	
