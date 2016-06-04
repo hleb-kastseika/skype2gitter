@@ -10,7 +10,6 @@ A Skype bot that echoes activity to Gitter.
 
 #### ToDo
  - add links formatting in messages
- - add searching of Skype and Gitter chats by name
  - add arguments validation, remove hardcode, add errors handling
  - write tests
  - write documentation 
