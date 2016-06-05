@@ -9,11 +9,14 @@ A Skype bot that echoes activity to Gitter.
 - run Jar-file `java -jar skype2gitter-0.0.1.jar {{skype_login}} {{skype_password}} {{gitter_room_id}} {{gitter_token}}`
 
 #### ToDo
- - add links formatting in messages
- - add arguments validation, remove hardcode, add errors handling
- - write tests
- - write documentation 
-
+0. add links formatting and new line formating
+1. add property file support
+2. add arguments validation (process cases with non requared arguments)
+3. add statistics displaying
+4. remove hardcode
+5. add errors handling
+6. write unit tests
+7. write manual
 
 *Feel free to make pull requests!*
 
