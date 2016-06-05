@@ -20,5 +20,7 @@ repositories{
 }
 
 dependencies{
-	compile group: 'com.samczsun', name: 'skype4j', version: '0.1.5'
+	compile 'com.samczsun:skype4j:0.1.5'
+	compile 'com.sparkjava:spark-core:2.5'
+	compile 'com.google.code.gson:gson:2.6.2'
 }
