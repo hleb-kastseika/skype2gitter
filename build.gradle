@@ -1,7 +1,7 @@
 apply plugin: 'java'
 
 version = '0.0.1'
-def mainClassName = 'com.last_khajiit.skype2gitter.Skype2gitter'
+def mainClassName = 'com.last_khajiit.skype2gitter.Skype2Gitter'
 
 task dist(type: Jar){
 	manifest{
