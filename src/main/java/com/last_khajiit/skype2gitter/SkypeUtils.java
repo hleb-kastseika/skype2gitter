@@ -13,43 +13,31 @@ import com.samczsun.skype4j.exceptions.NotParticipatingException;
 public class SkypeUtils {
 	private String login;
 	private String password;
-	private String skypeChatUrl;
 	
 	public SkypeUtils(String login, String password){
 		this.login = login;
 		this.password = password;
 	}
 	
-	public SkypeUtils(String login, String password, String skypeChatUrl){
-		this.login = login;
-		this.password = password;
-		this.skypeChatUrl = skypeChatUrl;
-	}
-	
 	public void processSkypeMessages(GitterUtils gitterUtils){
-		try {
+		try{
 			Skype skype = new SkypeBuilder(login, password).withAllResources().build();
 			skype.login();
-			System.out.println("Logged in");
-			skype.getEventDispatcher().registerListener(new Listener() {
-			  @EventHandler
-			  public void onMessage(MessageReceivedEvent e){
-				try {
-					if(skypeChatUrl != null && !skypeChatUrl.isEmpty() && e.getChat() instanceof GroupChat
-							&& ((GroupChat)e.getChat()).getJoinUrl().equals(skypeChatUrl)){
+			System.out.println("Skpype listener logged in");
+			skype.getEventDispatcher().registerListener(new Listener(){
+				@EventHandler
+				public void onMessage(MessageReceivedEvent e){
+					try{	
 						String message = gitterUtils.generateGitterRequestBody(e.getMessage().getSender().getDisplayName(), 
 								e.getMessage().getContent().toString());
 						gitterUtils.sendGitterMessage(message);
-					}else{
-						// TODO add validation of skypeChatUrl
+					}catch(ConnectionException ex){
+						System.out.println(ex.getMessage());
 					}
-				}catch(ConnectionException ex) {
-					System.out.println(ex.getMessage());
 				}
-			  }
 			});
 			skype.subscribe();
-		}catch(ConnectionException | NotParticipatingException | InvalidCredentialsException e) {
+		}catch(ConnectionException | NotParticipatingException | InvalidCredentialsException e){
             System.out.println(e.getMessage());
         }
 	}
