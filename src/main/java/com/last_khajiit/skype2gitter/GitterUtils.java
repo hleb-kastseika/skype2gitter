@@ -23,12 +23,13 @@ public class GitterUtils{
 
 	public String getGitterRoomId(String gitterRoomName){
 		String id = "";
+		int okCode = 200;
 		try{
 			String url = "https://api.gitter.im/v1/rooms?access_token="+gitterToken+"&q="+gitterRoomName;
 			URL obj = new URL(url);
 			HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 			con.setRequestMethod("GET");
-			if(con.getResponseCode()==200){
+			if(con.getResponseCode()==okCode){
 				BufferedReader in = new BufferedReader(
 		        new InputStreamReader(con.getInputStream()));
 				String inputLine;
