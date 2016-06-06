@@ -6,10 +6,11 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import java.util.regex.Pattern;
+import java.util.regex.Matcher;
 
 public class GitterUtils{
 	private String gitterToken;
@@ -22,7 +23,7 @@ public class GitterUtils{
 
 	public String getGitterRoomId(String gitterRoomName){
 		String id = "";
-		try {
+		try{
 			String url = "https://api.gitter.im/v1/rooms?access_token="+gitterToken+"&q="+gitterRoomName;
 			URL obj = new URL(url);
 			HttpURLConnection con = (HttpURLConnection) obj.openConnection();
@@ -46,14 +47,14 @@ public class GitterUtils{
 			}else{
 				System.out.println(con.getResponseCode());
 			}						
-		}catch(IOException ex) {
+		}catch(IOException ex){
 			System.out.println(ex);
 		}
 		return id;
 	}
 	
 	public void sendGitterMessage(String message){
-		try {
+		try{
 			String url = "https://api.gitter.im/v1/rooms/"+getGitterRoomId(gitterChatName)+"/chatMessages";
 			URL obj = new URL(url);
 			HttpURLConnection con = (HttpURLConnection) obj.openConnection();
@@ -68,18 +69,23 @@ public class GitterUtils{
 			os.close();
 			int responseCode = con.getResponseCode();
 			System.out.println("Response Code : " + responseCode);
-		}catch(IOException ex) {
+		}catch(IOException ex){
 			System.out.println(ex.getMessage());
 		}
 	}
 	
 	public String generateGitterRequestBody(String senderName, String message){
-		String formatedMessage = "{\"text\":\"" + senderName.replace("\"","\\\"") 
-				+ " said in Skype:\\n>" + message.replace("\"","\\\"") + "\"}";
-		formatedMessage = formatedMessage.replace("<b>","**").replace("</b>","**").replace("<i>","*")
-				.replace("</i>","*").replace("<s>","~~").replace("</s>","~~").replace("<pre>","```")
-				.replace("</pre>","```").replace("\n", " ").replace("\r", " ");	
-		//message.replace("</a>","```");		
+	    String formatedMessage = "";
+		try{
+			formatedMessage = "{\"text\":\"" + senderName.replace("\"","\\\"") 
+					+ " said in Skype:\\n>" + message.replace("\\", "\\\\").replace("\"","\\\"") + "\"}";
+			formatedMessage = formatedMessage.replace("<b>","**").replace("</b>","**").replace("<i>","*")
+					.replace("</i>","*").replace("<s>","~~").replace("</s>","~~").replace("<pre>","```")
+					.replace("</pre>","```").replace("\n", " ").replace("\r", " ").replaceAll("<a[^>]*>(.*?)</a>", "$1");
+			return formatedMessage;
+		}catch(Exception ex) {
+			System.out.println(ex.getMessage());
+	    }
 		return formatedMessage;
 	}
 }
