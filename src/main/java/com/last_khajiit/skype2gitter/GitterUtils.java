@@ -50,8 +50,7 @@ public class GitterUtils{
 		}catch(IOException ex){
 			System.out.println(ex);
 		}
-		//return id;
-		return "574fee35c43b8c6019764bd3";
+		return id;
 	}
 	
 	public void sendGitterMessage(String message){
