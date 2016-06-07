@@ -15,7 +15,9 @@ import java.util.regex.Matcher;
 public class GitterUtils{
 	private String gitterToken;
 	private String gitterChatName;
-	
+	private StatisticsUtil statisticsUtil = StatisticsUtil.getInstance();
+	private static final int OK_CODE = 200;	
+
 	public GitterUtils(String gitterToken, String gitterChatName){
 		this.gitterToken = gitterToken;
 		this.gitterChatName = gitterChatName;
@@ -23,13 +25,12 @@ public class GitterUtils{
 
 	public String getGitterRoomId(String gitterRoomName){
 		String id = "";
-		int okCode = 200;
 		try{
 			String url = "https://api.gitter.im/v1/rooms?access_token="+gitterToken+"&q="+gitterRoomName;
 			URL obj = new URL(url);
 			HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 			con.setRequestMethod("GET");
-			if(con.getResponseCode()==okCode){
+			if(con.getResponseCode()==OK_CODE){
 				BufferedReader in = new BufferedReader(
 		        new InputStreamReader(con.getInputStream()));
 				String inputLine;
@@ -68,8 +69,7 @@ public class GitterUtils{
 			os.write(message.getBytes("UTF-8"));
 			os.flush();
 			os.close();
-			int responseCode = con.getResponseCode();
-			System.out.println("Response Code : " + responseCode);
+			if(con.getResponseCode()==OK_CODE) statisticsUtil.increaseSentMesagesAmount();
 		}catch(IOException ex){
 			System.out.println(ex.getMessage());
 		}

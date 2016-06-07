@@ -13,7 +13,8 @@ import com.samczsun.skype4j.exceptions.NotParticipatingException;
 public class SkypeUtils {
 	private String login;
 	private String password;
-	
+	private StatisticsUtil statisticsUtil = StatisticsUtil.getInstance();	
+
 	public SkypeUtils(String login, String password){
 		this.login = login;
 		this.password = password;
@@ -27,7 +28,8 @@ public class SkypeUtils {
 			skype.getEventDispatcher().registerListener(new Listener(){
 				@EventHandler
 				public void onMessage(MessageReceivedEvent e){
-					try{	
+					statisticsUtil.increaseReceivedMesagesAmount();
+					try{							
 						String message = gitterUtils.generateGitterRequestBody(e.getMessage().getSender().getDisplayName(), 
 								e.getMessage().getContent().toString());
 						gitterUtils.sendGitterMessage(message);
