@@ -79,10 +79,10 @@ public class GitterUtils{
 	    String formatedMessage = "";
 		try{
 			formatedMessage = "{\"text\":\"" + senderName.replace("\"","\\\"") 
-					+ " said in Skype:\\n>" + message.replace("\\", "\\\\").replace("\"","\\\"") + "\"}";
+					+ " said in Skype:\\n>" + message.replace("\\", "\\\\").replace("\r\n", "\\n>").replace("\"","\\\"") + "\"}";
 			formatedMessage = formatedMessage.replace("<b>","**").replace("</b>","**").replace("<i>","*")
 					.replace("</i>","*").replace("<s>","~~").replace("</s>","~~").replace("<pre>","```")
-					.replace("</pre>","```").replace("\n", " ").replace("\r", " ").replaceAll("<a[^>]*>(.*?)</a>", "$1");
+					.replace("</pre>","```").replaceAll("<a[^>]*>(.*?)</a>", "$1");
 			return formatedMessage;
 		}catch(Exception ex) {
 			System.out.println(ex.getMessage());
