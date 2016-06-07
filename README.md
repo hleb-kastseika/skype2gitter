@@ -18,14 +18,12 @@ You can deploy it to [Heroku](heroku.com) with Heroku Toolbelt, there are few st
 
 
 #### ToDo
-0. fix new line formating
-1. add filtering for Skype chats (listen only mentioned chats, not all)
-2. add property file support
-3. add arguments validation (process cases with non requared arguments)
-4. add statistics displaying
-5. remove hardcode & refactor ugly code
-6. add errors handling
-7. write unit tests
+0. add statistics displaying
+1. add arguments validation
+2. add errors handling
+3. remove hardcode & refactor ugly code
+4. add filtering for Skype chats (listen only mentioned chats, not all)
+5. write unit tests
 8. write manual
 
 *Feel free to make pull requests!*
