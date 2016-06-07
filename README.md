@@ -18,7 +18,6 @@ You can deploy it to [Heroku](heroku.com) with Heroku Toolbelt, there are few st
 
 
 #### ToDo
-0. add statistics displaying
 1. add arguments validation
 2. add errors handling
 3. remove hardcode & refactor ugly code
