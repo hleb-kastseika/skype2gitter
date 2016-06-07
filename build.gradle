@@ -21,6 +21,6 @@ repositories{
 
 dependencies{
 	compile 'com.samczsun:skype4j:0.1.5'
-	compile 'com.sparkjava:spark-core:2.5'
+	compile 'io.undertow:undertow-core:1.3.23.Final'
 	compile 'com.google.code.gson:gson:2.6.2'
 }
