@@ -9,6 +9,10 @@ public class Skype2Gitter{
 	private static StatisticsUtil statisticsUtil = StatisticsUtil.getInstance();
 	
 	public static void main(String[] args){
+		if(args.length < 4){
+        		System.err.println("ERROR: Not all parameters have been specified!");
+        		System.exit(0);
+    		}
 		final String username = args[0];
 		final String password = args[1];
 		final String gitterChatName = args[2];
