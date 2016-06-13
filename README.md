@@ -21,8 +21,8 @@ You can deploy it to [Heroku](heroku.com) with Heroku Toolbelt, there are few st
 1. add errors handling
 2. remove hardcode & refactor ugly code
 3. add filtering for Skype chats (listen only mentioned chats, not all)
-4. write unit tests
-5. write manual
+4. write unit/functional tests
+5. write manual, examples
 
 *Feel free to make pull requests!*
 
