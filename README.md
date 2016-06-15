@@ -18,7 +18,7 @@ You can deploy it to [Heroku](heroku.com) with Heroku Toolbelt, there are few st
 
 
 #### ToDo
-1. add errors handling
+1. add errors handling and logging
 2. remove hardcode & refactor ugly code
 3. add filtering for Skype chats (listen only mentioned chats, not all)
 4. write unit/functional tests
