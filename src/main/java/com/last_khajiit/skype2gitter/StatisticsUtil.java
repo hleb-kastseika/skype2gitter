@@ -23,8 +23,8 @@ public final class StatisticsUtil{
 	public String getStatisticsAsString(){
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy HH:mm");
 		return "Start time: " + startTime.format(formatter)
-				+"\nReceived mesages: " + receivedMesagesAmount
-				+"\nSent mesages: " + sentMesagesAmount;
+				+"<br/>Received mesages: " + receivedMesagesAmount
+				+"<br/>Sent mesages: " + sentMesagesAmount;
 	}
 
 	public void increaseReceivedMesagesAmount(){
