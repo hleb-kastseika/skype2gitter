@@ -7,3 +7,7 @@
 .project
 .metadata
 .settings
+
+# Idea project files
+.idea/
+skype2gitter.iml
