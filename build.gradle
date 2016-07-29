@@ -2,8 +2,15 @@ apply plugin: 'java'
 
 version = '0.0.1'
 def mainClassName = 'com.last_khajiit.skype2gitter.Skype2Gitter'
+def startupScript = 'java -jar ' + project.name + '-' + version + '.jar'
+def fatJarFolder = 'build/libs/'
+def tempDistFolder = 'build/tmp-dist/'
+def startupBatFileName = 'startup.bat'
+def startupShFileHead = '#!/bin/sh\n'
+def startupShFileName = 'startup.sh'
+def distFolder = 'build/dist'
 
-task dist(type: Jar){
+task fatJar(type: Jar) {
 	manifest{
         attributes 'Main-Class': mainClassName
     }
@@ -12,10 +19,27 @@ task dist(type: Jar){
 	with jar
 }
 
+task copyJar(dependsOn: fatJar, type: Copy) {
+	from fatJarFolder
+	into tempDistFolder
+}
+
+task dist(dependsOn: copyJar, type:Zip) {
+	doFirst{
+		def f1 = new File(tempDistFolder+startupBatFileName)
+		f1.text = startupScript
+		
+		def f2 = new File(tempDistFolder+startupShFileName)
+		f2.text = startupShFileHead+'\n\n'+startupScript
+	}
+	from tempDistFolder
+	into project.name
+	destinationDir file(distFolder)
+}
+
 task stage(dependsOn: dist)
 
 repositories{
-    jcenter()
 	mavenCentral()
 }
 
