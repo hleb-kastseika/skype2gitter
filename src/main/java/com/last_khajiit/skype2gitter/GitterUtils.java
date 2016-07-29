@@ -6,6 +6,9 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+
+import org.pmw.tinylog.Logger;
+
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
@@ -45,10 +48,10 @@ public class GitterUtils{
 					id = responseArray.get(0).getAsJsonObject().get("id").toString();
 				}
 			}else{
-				System.out.println(con.getResponseCode());
+				Logger.error(con.getResponseCode() + con.getResponseMessage());
 			}						
 		}catch(IOException ex){
-			System.out.println(ex);
+			Logger.error(ex);
 		}
 		return id;
 	}
@@ -69,7 +72,7 @@ public class GitterUtils{
 			os.close();
 			if(con.getResponseCode()==OK_CODE) statisticsUtil.increaseSentMesagesAmount();
 		}catch(IOException ex){
-			System.out.println(ex.getMessage());
+			Logger.error(ex);
 		}
 	}
 	
@@ -83,7 +86,7 @@ public class GitterUtils{
 					.replace("</pre>","```").replaceAll("<a[^>]*>(.*?)</a>", "$1");
 			return formatedMessage;
 		}catch(Exception ex) {
-			System.out.println(ex.getMessage());
+			Logger.error(ex);
 	    }
 		return formatedMessage;
 	}

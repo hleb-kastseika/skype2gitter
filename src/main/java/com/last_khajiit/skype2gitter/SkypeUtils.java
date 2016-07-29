@@ -1,5 +1,7 @@
 package com.last_khajiit.skype2gitter;
 
+import org.pmw.tinylog.Logger;
+
 import com.samczsun.skype4j.Skype;
 import com.samczsun.skype4j.SkypeBuilder;
 import com.samczsun.skype4j.events.EventHandler;
@@ -23,7 +25,7 @@ public class SkypeUtils {
 		try{
 			Skype skype = new SkypeBuilder(login, password).withAllResources().build();
 			skype.login();
-			System.out.println("Skpype listener logged in");
+			Logger.info("Skpype listener logged in");
 			skype.getEventDispatcher().registerListener(new Listener(){
 				@EventHandler
 				public void onMessage(MessageReceivedEvent e){
@@ -33,13 +35,13 @@ public class SkypeUtils {
 								e.getMessage().getContent().toString());
 						gitterUtils.sendGitterMessage(message);
 					}catch(ConnectionException ex){
-						System.out.println(ex.getMessage());
+						Logger.error(ex);
 					}
 				}
 			});
 			skype.subscribe();
 		}catch(ConnectionException | NotParticipatingException | InvalidCredentialsException e){
-            System.out.println(e.getMessage());
+			Logger.error(e);
         }
 	}
 }
