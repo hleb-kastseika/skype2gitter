@@ -2,7 +2,6 @@ package com.last_khajiit.skype2gitter;
 
 import com.samczsun.skype4j.Skype;
 import com.samczsun.skype4j.SkypeBuilder;
-import com.samczsun.skype4j.chat.GroupChat;
 import com.samczsun.skype4j.events.EventHandler;
 import com.samczsun.skype4j.events.Listener;
 import com.samczsun.skype4j.events.chat.message.MessageReceivedEvent;

@@ -9,8 +9,6 @@ import java.net.URL;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import java.util.regex.Pattern;
-import java.util.regex.Matcher;
 
 public class GitterUtils{
 	private String gitterToken;
