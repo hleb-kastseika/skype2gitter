@@ -6,7 +6,10 @@ A Skype bot that echoes activity to Gitter.
 
 #### How to build and run
 - build with Gradle `gradle dist`, it will generate zip archive in `build/dist` directory
-- run Jar-file `java -jar skype2gitter-0.0.1.jar {{skype_login}} {{skype_password}} {{gitter_chat_name}} {{gitter_token}}`
+- unpack archive and populate `skype2gitter.properties`, there are 4 required property (skype.login, skype.password, gitter.chatname, gitter.token)
+- run startup script (.bat or .sh)
+- to be sure that app was started check console output of log file
+- For viewing of statistics open Statistics page in browser (default url `localhost:8080/`, can be changed in properties)
 
 
 #### ToDo
