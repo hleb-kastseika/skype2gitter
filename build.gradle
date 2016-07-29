@@ -9,6 +9,7 @@ def startupBatFileName = 'startup.bat'
 def startupShFileHead = '#!/bin/sh\n'
 def startupShFileName = 'startup.sh'
 def distFolder = 'build/dist'
+def confFolder = 'conf/'
 
 task fatJar(type: Jar) {
 	manifest{
@@ -24,7 +25,12 @@ task copyJar(dependsOn: fatJar, type: Copy) {
 	into tempDistFolder
 }
 
-task dist(dependsOn: copyJar, type:Zip) {
+task copyConf(dependsOn: copyJar, type: Copy) {
+	from confFolder
+	into tempDistFolder
+}
+
+task dist(dependsOn: copyConf, type:Zip) {
 	doFirst{
 		def f1 = new File(tempDistFolder+startupBatFileName)
 		f1.text = startupScript

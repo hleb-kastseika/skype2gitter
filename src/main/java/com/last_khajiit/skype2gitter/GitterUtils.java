@@ -19,9 +19,9 @@ public class GitterUtils{
 	private StatisticsUtil statisticsUtil = StatisticsUtil.getInstance();
 	private static final int OK_CODE = 200;	
 
-	public GitterUtils(String gitterToken, String gitterChatName){
-		this.gitterToken = gitterToken;
-		this.gitterChatName = gitterChatName;
+	public GitterUtils(){
+		this.gitterToken = System.getProperty("gitter.token");
+		this.gitterChatName = System.getProperty("gitter.chatname");
 	}
 
 	public String getGitterRoomId(String gitterRoomName){

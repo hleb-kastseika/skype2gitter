@@ -16,9 +16,9 @@ public class SkypeUtils {
 	private String password;
 	private StatisticsUtil statisticsUtil = StatisticsUtil.getInstance();	
 
-	public SkypeUtils(String login, String password){
-		this.login = login;
-		this.password = password;
+	public SkypeUtils(){
+		this.login = System.getProperty(AppProperties.SKYPE_LOGIN);
+		this.password = System.getProperty(AppProperties.SKYPE_PASSWORD);
 	}
 	
 	public void processSkypeMessages(GitterUtils gitterUtils){
