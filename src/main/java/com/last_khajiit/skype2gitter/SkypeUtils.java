@@ -19,6 +19,10 @@ public class SkypeUtils {
 	public SkypeUtils(){
 		this.login = System.getProperty(AppProperties.SKYPE_LOGIN);
 		this.password = System.getProperty(AppProperties.SKYPE_PASSWORD);
+		if(login.isEmpty() || login==null || password.isEmpty() || password==null){
+			Logger.error("Some of Skype properies are incorrect or missed.");
+			System.exit(0);
+		}
 	}
 	
 	public void processSkypeMessages(GitterUtils gitterUtils){
