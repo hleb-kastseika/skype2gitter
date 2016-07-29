@@ -22,6 +22,10 @@ public class GitterUtils{
 	public GitterUtils(){
 		this.gitterToken = System.getProperty("gitter.token");
 		this.gitterChatName = System.getProperty("gitter.chatname");
+		if(gitterToken.isEmpty() || gitterToken==null || gitterChatName.isEmpty() || gitterChatName==null){
+			Logger.error("Some of Gitter properies are incorrect or missed.");
+			System.exit(0);
+		}
 	}
 
 	public String getGitterRoomId(String gitterRoomName){
