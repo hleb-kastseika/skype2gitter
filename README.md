@@ -9,15 +9,14 @@ A Skype bot that echoes activity to Gitter.
 - unpack archive and populate `skype2gitter.properties`, there are 4 required property (skype.login, skype.password, gitter.chatname, gitter.token)
 - run startup script (.bat or .sh)
 - to be sure that app was started check console output of log file
-- For viewing of statistics open Statistics page in browser (default url `localhost:8080/`, can be changed in properties)
+- for viewing of statistics open Statistics page in browser (default url `localhost:8080/`, can be changed in properties)
 
 
 #### ToDo
-1. add errors handling
-2. remove hardcode & refactor ugly code
-3. add filtering for Skype chats (listen only mentioned chats, not all)
-4. write unit/functional tests
-5. write manual, examples
+1. remove hardcode & refactor ugly code
+2. add filtering for Skype chats (listen only mentioned chats, not all)
+3. write unit/functional tests
+4. write documentation
 
 *Feel free to make pull requests!*
 
