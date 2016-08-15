@@ -2,7 +2,7 @@
 
 [![release](https://img.shields.io/badge/release-v0.0.1-brightgreen.png?style=default)](https://github.com/last-khajiit/skype2gitter/releases/latest) [![Build Status](https://travis-ci.org/last-khajiit/skype2gitter.svg?branch=master)](https://travis-ci.org/last-khajiit/skype2gitter)
 
-A Skype bot that echoes activity to Gitter.
+Simple Skype to Gitter bridge. The bot echoes messages from Skype chat to Gitter.
 
 #### How to build and run
 - build with Gradle `gradle dist`, it will generate zip archive in `build/dist` directory
