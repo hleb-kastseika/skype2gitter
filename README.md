@@ -14,9 +14,8 @@ A Skype bot that echoes activity to Gitter.
 
 #### ToDo
 1. remove hardcode & refactor ugly code
-2. add filtering for Skype chats (listen only mentioned chats, not all)
-3. write unit/functional tests
-4. write documentation
+2. write tests
+3. update documentation
 
 *Feel free to make pull requests!*
 
