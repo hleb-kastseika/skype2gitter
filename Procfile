@@ -1,1 +1,0 @@
-web: java -jar build/libs/skype2gitter-0.0.1.jar $SKYPE_LOGIN $SKYPE_PASSWORD $GITTER_CHAT_NAME $GITTER_TOKEN
