@@ -10,6 +10,7 @@ def startupShFileHead = '#!/bin/sh\n'
 def startupShFileName = 'startup.sh'
 def distFolder = 'build/dist'
 def confFolder = 'conf/'
+def readmeFile = 'README.md'
 
 task fatJar(type: Jar) {
 	manifest{
@@ -25,7 +26,12 @@ task copyJar(dependsOn: fatJar, type: Copy) {
 	into tempDistFolder
 }
 
-task copyConf(dependsOn: copyJar, type: Copy) {
+task copyReadme(dependsOn: copyJar, type: Copy) {
+	from readmeFile
+	into tempDistFolder
+}
+
+task copyConf(dependsOn: copyReadme, type: Copy) {
 	from confFolder
 	into tempDistFolder
 }
@@ -42,8 +48,6 @@ task dist(dependsOn: copyConf, type:Zip) {
 	into project.name
 	destinationDir file(distFolder)
 }
-
-task stage(dependsOn: dist)
 
 repositories{
 	mavenCentral()
