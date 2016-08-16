@@ -1,8 +1,6 @@
 # skype2gitter
 
-[![Join the chat at https://gitter.im/skype2gitter/Lobby](https://badges.gitter.im/skype2gitter/Lobby.svg)](https://gitter.im/skype2gitter/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-
-[![release](https://img.shields.io/badge/release-v0.0.1-brightgreen.png?style=default)](https://github.com/last-khajiit/skype2gitter/releases/latest) [![Build Status](https://travis-ci.org/last-khajiit/skype2gitter.svg?branch=master)](https://travis-ci.org/last-khajiit/skype2gitter)
+[![release](https://img.shields.io/badge/release-v0.0.1-brightgreen.png?style=default)](https://github.com/last-khajiit/skype2gitter/releases/latest) [![Build Status](https://travis-ci.org/last-khajiit/skype2gitter.svg?branch=master)](https://travis-ci.org/last-khajiit/skype2gitter) [![Join the chat at https://gitter.im/skype2gitter/Lobby](https://badges.gitter.im/skype2gitter/Lobby.svg)](https://gitter.im/skype2gitter/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 Simple Skype to Gitter bridge. The bot echoes messages from Skype chat to Gitter.
 
