@@ -31,7 +31,7 @@ public class GitterUtils{
 	public String getGitterRoomId(String gitterRoomName){
 		String id = "";
 		try{
-			String url = "https://api.gitter.im/v1/rooms?access_token="+gitterToken+"&q="+gitterRoomName;
+			String url = "https://api.gitter.im/v1/rooms?access_token="+gitterToken;
 			URL obj = new URL(url);
 			HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 			con.setRequestMethod("GET");
@@ -46,10 +46,14 @@ public class GitterUtils{
 				}
 				in.close();				
 				JsonParser jsonParser = new JsonParser();
-				JsonObject mainObject = (JsonObject)jsonParser.parse(response.toString());
-				JsonArray responseArray = mainObject.getAsJsonArray("results");
-				if(responseArray.size() != 0){
-					id = responseArray.get(0).getAsJsonObject().get("id").toString();
+				JsonArray responseArray = (JsonArray)jsonParser.parse(response.toString());
+				if(responseArray.size() > 0){
+					for(int i=0; i<responseArray.size(); i++){
+						JsonObject roomNode = (JsonObject)responseArray.get(i);
+						if(gitterRoomName.equals(roomNode.get("name").toString().replaceAll("\"", ""))){
+							id = roomNode.get("id").toString().replaceAll("\"", "");
+						}
+					}
 				}
 			}else{
 				Logger.error(con.getResponseCode() + con.getResponseMessage());
@@ -62,19 +66,24 @@ public class GitterUtils{
 	
 	public void sendGitterMessage(String message){
 		try{
-			String url = "https://api.gitter.im/v1/rooms/"+getGitterRoomId(gitterChatName)+"/chatMessages";
-			URL obj = new URL(url);
-			HttpURLConnection con = (HttpURLConnection) obj.openConnection();
-			con.setRequestMethod("POST");
-			con.setRequestProperty("Content-Type", "application/json; charset=utf-8");
-			con.setRequestProperty("Accept", "application/json");
-			con.setRequestProperty("Authorization", "Bearer "+gitterToken);
-			con.setDoOutput(true);
-			DataOutputStream os = new DataOutputStream(con.getOutputStream());
-			os.write(message.getBytes("UTF-8"));
-			os.flush();
-			os.close();
-			if(con.getResponseCode()==OK_CODE) statisticsUtil.increaseSentMesagesAmount();
+			String roomId = getGitterRoomId(gitterChatName);
+			if(!roomId.isEmpty()){
+				String url = "https://api.gitter.im/v1/rooms/"+roomId+"/chatMessages";
+				URL obj = new URL(url);
+				HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+				con.setRequestMethod("POST");
+				con.setRequestProperty("Content-Type", "application/json; charset=utf-8");
+				con.setRequestProperty("Accept", "application/json");
+				con.setRequestProperty("Authorization", "Bearer "+gitterToken);
+				con.setDoOutput(true);
+				DataOutputStream os = new DataOutputStream(con.getOutputStream());
+				os.write(message.getBytes("UTF-8"));
+				os.flush();
+				os.close();
+				if(con.getResponseCode()==OK_CODE) statisticsUtil.increaseSentMesagesAmount();
+			}else{
+				Logger.error("Room ID is empty! Please, check gitter.chatname property value");
+			}			
 		}catch(IOException ex){
 			Logger.error(ex);
 		}
