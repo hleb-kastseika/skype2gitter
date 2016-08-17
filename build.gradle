@@ -1,6 +1,6 @@
 apply plugin: 'java'
 
-version = '0.0.1'
+version = '0.1'
 def mainClassName = 'com.last_khajiit.skype2gitter.Skype2Gitter'
 def startupScript = 'java -jar ' + project.name + '-' + version + '.jar'
 def fatJarFolder = 'build/libs/'
