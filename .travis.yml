@@ -5,5 +5,5 @@ script:
   gradle dist
   
 notifications:
-  email: false
-
+  email:
+    - last.khajiit@gmail.com
