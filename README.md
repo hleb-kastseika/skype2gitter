@@ -11,12 +11,6 @@ Simple Skype to Gitter bridge. The bot echoes messages from Skype chat to Gitter
 - to be sure that app was started check console output of log file
 - for viewing of statistics open Statistics page in browser (default url `localhost:8080/`, can be changed in properties)
 
-
-#### ToDo
-1. remove hardcode & refactor ugly code
-2. write tests
-3. update documentation
-
 *Feel free to make pull requests!*
 
 
