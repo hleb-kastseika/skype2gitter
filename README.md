@@ -4,8 +4,11 @@
 
 Simple Skype to Gitter bridge. The bot echoes messages from Skype chat to Gitter.
 
-#### How to build and run
-- build with Gradle `gradle dist`, it will generate zip archive in `build/dist` directory
+#### How to run
+
+You can download [archive](https://github.com/last-khajiit/skype2gitter/releases/latest) with latest stable release and run it or clone the repo and build it with Gradle - `gradle dist`. It will generate zip archive in `build/dist` directory.
+
+Next steps:
 - unpack archive and populate `skype2gitter.properties`, there are 4 required property (skype.login, skype.password, gitter.chatname, gitter.token)
 - run startup script (.bat or .sh)
 - to be sure that app was started check console output of log file
