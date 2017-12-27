@@ -6,4 +6,5 @@ script:
   
 notifications:
   email:
-    - last.khajiit@gmail.com
+    on_success: never
+    on_failure: always
